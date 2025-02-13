@@ -1,4 +1,6 @@
 import EducationEntry from "./EducationEntry";
+import addButton from '../assets/addButton.svg'
+import deleteButton from '../assets/deleteButton.svg'
 
 function Education(props) {
     const { data, handleEduChange } = props;
@@ -51,7 +53,7 @@ function Education(props) {
                                         entry.key !== Edu.key
                                      ));
                                 }}>
-                                Delete Education
+                                <img src={deleteButton} alt="Delete"/>
                             </button>
                         </li>
                     ))}
@@ -60,7 +62,7 @@ function Education(props) {
                 <button className="addButton" onClick={() => {
                     AddEducationEntry();
                 }}>
-                    Add Education
+                    <img src={addButton} alt="Add New"/>
                 </button>
             </div>
         </>

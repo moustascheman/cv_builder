@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import PersonalInfo from './components/PersonalInfo'
 import Editor from './components/editor'
+import Preview from './components/Preview'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -48,20 +46,25 @@ function App() {
     })
   }
 
+  const handleWorkChanges = (workArr) => {
+    setCVData({
+      ...cvData,
+      workExperience: [...workArr]
+    })
+  }
+
   return (
     <>
-      <div>
-        <div>{cvData.personalInfo.fullName}</div>
-        <div>{cvData.personalInfo.email}</div>
-        <div>{cvData.personalInfo.phoneNo}</div>
-        <div>{cvData.personalInfo.location}</div>
-        <div>{cvData.personalInfo.site}</div>
-      </div>
+      <h1>CSV Builder</h1>
+      <body>
       <Editor 
       data = {cvData} 
       handlePIChange={handlePersonalInfoChange}
       handleEduChange = {handleEduChange}
+      handleWorkChanges = {handleWorkChanges}
       />
+      <Preview data={cvData}/>
+      </body>
     </>
   )
 }
